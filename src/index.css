@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+    --color-fundo: #0D1B2A
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #e5e7eb;
+}
+
+.link-hover {
+    position: relative;
+    display: inline-block;
+}
+
+.link-hover::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    height: 4px;
+    width: 0;
+    background-color: #0D1B2A;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.link-hover:hover::before {
+    width: 100%;
+    transform: scaleX(1);
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE e Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari e Opera */
+}
+
+
+@keyframes slide-horizontal {
+    0% {
+        transform: translateX(-100vw);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+        transform: translateX(-100vw);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateX(100vw);
+    }
+
+    91% {
+        opacity: 0;
+        transform: translateX(100vw);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100vw);
+    }
+}
+
+.animate-slide-horizontal {
+    animation-name: slide-horizontal;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
