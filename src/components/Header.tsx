@@ -27,8 +27,9 @@ function Header() {
         <header className="bg-white py-2 py-auto shadow fixed top-0 right-0 w-full z-20">
             <Container>
                 <div className="flex items-center justify-between">
-                    <div className="border-2 w-12 text-center rounded-full text-3xl font-semibold bg-fundo text-gray-200 p-1 mx-5">
-                        JT
+                    <div className="text-2xl">
+                        <span className="font-bold text-blue-900">Dev</span>
+                        <span className="text-fundo font-semibold">FullStack</span>
                     </div>
 
                     <nav className="hidden sm:flex gap-10 text-lg">
@@ -46,13 +47,13 @@ function Header() {
 
                     {
                         isOpen && (
-                            <nav className="flex sm:hidden absolute z-30 gap-3 flex-col right-0 top-4 bg-white p-2 rounded text-md"
-                            ref={menuRef}
+                            <nav className="flex sm:hidden absolute z-30 gap-3 flex-col right-0 top-4 bg-white p-2 rounded text-lg"
+                                ref={menuRef}
                             >
-                                <a href="" className="link-hover">Inicio</a>
-                                <a href="" className="link-hover">Habilidades</a>
-                                <a href="" className="link-hover">Projetos</a>
-                                <a href="" className="link-hover">Contatos</a>
+                                <a href="#inicio" className="link-hover">Inicio</a>
+                                <a href="#hab" className="link-hover">Habilidades</a>
+                                <a href="#projetos" className="link-hover">Projetos</a>
+                                <a href="#sobre" className="link-hover">Sobre</a>
                             </nav>
                         )
                     }
