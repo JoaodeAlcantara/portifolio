@@ -1,64 +1,66 @@
-import Inicio from "./components/Inicio";
-import Header from "./components/Header";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Sobre from "./components/Sobre";
-import { useEffect, useRef, useState } from "react";
-
-
+import Sidebar from "./Components/Sidebar";
+import AboutMe from "./Components/AboutMe";
+import ProjetcsList from "./Components/ProjectsList";
+import { useState } from "react";
 
 function App() {
+  const [isView, setIsView] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [aboutMeAnimation, setAboutMeAnimation] = useState('');
+  const [projectsAnimation, setProjectsAnimation] = useState('');
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
-  const inicioRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const sobreRef = useRef<HTMLDivElement>(null);
-
-  const [visible, setVisible] = useState({
-    inicio: false,
-    skills: false,
-    projects: false,
-    sobre: false,
-  });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.target === inicioRef.current) {
-            setVisible(v => ({ ...v, inicio: en.isIntersecting }));
-        }
-        if (en.target === skillsRef.current) {
-          setVisible(v => ({ ...v, skills: en.isIntersecting }));
-        }
-        if (en.target === projectsRef.current) {
-          setVisible(v => ({ ...v, projects: en.isIntersecting }));
-        }
-        if (en.target === sobreRef.current) {
-          setVisible(v => ({ ...v, sobre: en.isIntersecting }));
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -20% 0px' });
-
-    if (inicioRef.current) observer.observe(inicioRef.current);
-    if (skillsRef.current) observer.observe(skillsRef.current);
-    if (projectsRef.current) observer.observe(projectsRef.current);
-    if (sobreRef.current) observer.observe(sobreRef.current);
-
-    return () => observer.disconnect();
-  }, []);
-
+  const toggleView = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    
+    if (!isView) {
+      setAboutMeAnimation('section-slide-out-left');
+      
+      setTimeout(() => {
+        setIsView(true);
+        setProjectsAnimation('section-slide-in-right');
+        
+        setTimeout(() => {
+          setIsAnimating(false);
+          setAboutMeAnimation('');
+          setProjectsAnimation('');
+        }, 500);
+      }, 250);
+    } else {
+      setProjectsAnimation('section-slide-out-right');
+      
+      setTimeout(() => {
+        setIsView(false);
+        setAboutMeAnimation('section-slide-in-left');
+        
+        setTimeout(() => {
+          setIsAnimating(false);
+          setAboutMeAnimation('');
+          setProjectsAnimation('');
+        }, 500);
+      }, 250);
+    }
+  };
 
   return (
-    <>
-      <Header />
-
-      <main>
-        <Inicio inicioRef={inicioRef} isVisible={visible.inicio} />
-        <Skills skillsRef={skillsRef} isVisible={visible.skills} />
-        <Projects projectsRef={projectsRef} isVisible={visible.projects} />
-        <Sobre sobreRef={sobreRef} isVisible={visible.sobre} />
+    <div className="flex min-h-screen bg-gray-200">
+      <Sidebar isFirstLoad={isFirstLoad} />
+      <main className={`flex-1 p-6 transition-all duration-300 ml-[20%] relative overflow-hidden`}>
+        {!isView && (
+          <div className={`${aboutMeAnimation}`}>
+            <AboutMe onToggleView={toggleView} isAnimating={isAnimating} isFirstLoad={isFirstLoad} setIsFirstLoad={setIsFirstLoad} />
+          </div>
+        )}
+        
+        {isView && (
+          <div className={`${projectsAnimation}`}>
+            <ProjetcsList toggleView={toggleView} />
+          </div>
+        )}
       </main>
-    </>
+    </div>
   )
 }
 
