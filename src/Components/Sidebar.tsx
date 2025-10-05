@@ -107,18 +107,19 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
 
     return (
         <>
-            <aside className={`bg-gray-900 w-1/5 p-4 fixed left-0 top-0 h-screen hide-scrollbar ${
-                isFirstLoad 
-                    ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'transform translate-x-full opacity-0'}`
+            <aside className={`bg-gray-900 p-4 hide-scrollbar w-full relative min-h-fit
+                lg:w-1/5 lg:fixed lg:left-0 lg:top-0 lg:h-screen
+                ${isFirstLoad 
+                    ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'lg:transform lg:translate-x-full lg:opacity-0'}`
                     : ''
-            }`}>
+                }`}>
 
                 <div className={`text-center mb-4 ${
                     isFirstLoad 
                         ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
                         : ''
                 }`}>
-                    <div className="w-40 h-40 mx-auto mt-5 p-1 border-3 border-white rounded-full">
+                    <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mt-5 p-1 border-3 border-white rounded-full">
                         <div className="flip-container">
                             <div 
                                 className={`flip-inner ${isFlipped ? 'flipped' : ''}`}
@@ -173,7 +174,7 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
                 {/* Seção 2: Habilidades Principais */}
                 <div className="mb-8">
                     <h2 className='text-lg text-white font-semibold mb-4 text-center'>Principais Tecnologias</h2>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
+                    <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3'>
                         {technologies.map((tech, index) => (
                             <div
                                 key={tech.name}

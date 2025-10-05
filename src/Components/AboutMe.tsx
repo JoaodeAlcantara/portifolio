@@ -63,7 +63,7 @@ function AboutMe({ onToggleView, isAnimating, isFirstLoad, setIsFirstLoad }: Abo
 
     return (
         <>
-            <section className={`bg-gradient-to-br from-white to-gray-50 rounded-2xl py-8 px-10 shadow-2xl w-full max-w-6xl relative ${
+            <section className={`bg-gradient-to-br from-white to-gray-50 rounded-2xl py-6 px-4 mb-10 lg:mb-0 lg:py-8 lg:px-10 shadow-2xl w-full max-w-6xl relative ${
                 isFirstLoad 
                     ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'transform translate-x-full opacity-0'}`
                     : ''
@@ -97,7 +97,7 @@ function AboutMe({ onToggleView, isAnimating, isFirstLoad, setIsFirstLoad }: Abo
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 group/cards cursor-default">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 mb-8 lg:mb-12 group/cards cursor-default">
                         {
                             cardList.map((i, idx)=> (
                                 <div 
@@ -139,7 +139,7 @@ function AboutMe({ onToggleView, isAnimating, isFirstLoad, setIsFirstLoad }: Abo
                 <button
                     onClick={onToggleView}
                     disabled={isAnimating}
-                    className={`flag-button absolute -bottom-16 right-10 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-600 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    className={`flag-button absolute -bottom-18 lg:-bottom-16 right-4 lg:right-10 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-600 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed ${
                         isFirstLoad 
                             ? `transition-all duration-1200 ${animationStage >= 3 ? 'animate-flag-slide' : 'transform -translate-x-48 opacity-0'}`
                             : 'transition-colors duration-300'
