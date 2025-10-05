@@ -87,13 +87,13 @@ function AboutMe({ onToggleView, isAnimating, isFirstLoad, setIsFirstLoad }: Abo
                                 </strong> com foco em <span className="text-blue-600 font-semibold">
                                 desenvolvimento back-end
                             </span>.
-                            Faço de sistema de informação, com previsão de formação para o final de 2027. Tenho experiencia de desenvolvimento de aplicações web através de projetos universitários e pessoais.
+                            Faço de sistema de informação, com previsão de formação para o final de 2027. Tenho experiencia de desenvolvimento de aplicações web através de projetos onde busco entregar valor real através de softwares bem construídos
                         </p>
 
                         <br />
 
                         <p>
-                            Estou em busca da minha primeira oportunidade de emprego para poder começar a minha jornada no mercado de trabalho onde possa me desenvolver pessoal e profissionalmente. Buscando ambientes com desafios técnicos reais, cultura de aprendizado contínuo e colaboração entre equipes.
+                            Estou em busca da minha primeira oportunidade para iniciar minha jornada profissional, evoluir técnica e pessoalmente e contribuir de forma concreta em soluções reais. Procuro equipes com desafios técnicos, aprendizado contínuo e colaboração genuína.
                         </p>
                     </div>
 
