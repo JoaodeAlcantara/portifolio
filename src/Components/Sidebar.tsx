@@ -20,7 +20,7 @@ import {
 } from "react-icons/si";
 import { MdOutlineMail } from "react-icons/md";
 
-interface Technology {
+export interface Technology {
     name: string;
     icon: React.ReactNode;
     color: string;
@@ -88,19 +88,19 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
         {
             name: 'LinkedIn',
             icon: <IoLogoLinkedin size={24} />,
-            url: 'https://linkedin.com/in/seu_linkedin', // Personalize aqui
+            url: 'https://linkedin.com/in/seu_linkedin',
             color: 'hover:text-blue-600'
         },
         {
             name: 'GitHub',
             icon: <IoLogoGithub size={24} />,
-            url: 'https://github.com/seu_github', // Personalize aqui
+            url: 'https://github.com/seu_github',
             color: 'hover:text-gray-400'
         },
         {
             name: 'Email',
             icon: <MdOutlineMail size={24} />,
-            url: 'https://github.com/seu_github', // Personalize aqui
+            url: 'https://github.com/seu_github',
             color: 'hover:text-red-400'
         }
     ];

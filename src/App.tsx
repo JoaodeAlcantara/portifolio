@@ -46,10 +46,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-200">
-      {/* Layout Desktop: flex horizontal */}
+      
       <div className="hidden lg:flex">
-        <Sidebar isFirstLoad={isFirstLoad} />
-        <main className={`flex-1 p-6 transition-all duration-300 ml-[20%] relative overflow-hidden`}>
+        {!isView && <Sidebar isFirstLoad={isFirstLoad} />}
+        <main className={`flex-1 p-6 transition-all duration-300 ${!isView ? 'ml-[20%]': 'ml-0'} relative overflow-hidden`}>
           {!isView && (
             <div className={`${aboutMeAnimation}`}>
               <AboutMe onToggleView={toggleView} isAnimating={isAnimating} isFirstLoad={isFirstLoad} setIsFirstLoad={setIsFirstLoad} />
@@ -64,7 +64,7 @@ function App() {
         </main>
       </div>
 
-      {/* Layout Mobile: flex vertical */}
+      
       <div className="lg:hidden flex flex-col">
         <Sidebar isFirstLoad={isFirstLoad} />
         <main className="flex-1 p-4 relative overflow-hidden">
