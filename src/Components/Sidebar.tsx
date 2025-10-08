@@ -66,10 +66,10 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
         // Animações só na primeira carga
         // Sidebar entra da direita
         setTimeout(() => setAnimationStage(1), 100);
-        
+
         // Foto e redes vem de cima
         setTimeout(() => setAnimationStage(2), 400);
-        
+
         // Tecnologias vem de baixo uma por uma
         setTimeout(() => {
             technologies.forEach((_, index) => {
@@ -88,40 +88,39 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
         {
             name: 'LinkedIn',
             icon: <IoLogoLinkedin size={24} />,
-            url: 'https://linkedin.com/in/seu_linkedin',
+            url: 'https://linkedin.com/in/joaoteixeira02',
             color: 'hover:text-blue-600'
         },
         {
             name: 'GitHub',
             icon: <IoLogoGithub size={24} />,
-            url: 'https://github.com/seu_github',
+            url: 'https://github.com/JoaodeAlcantara',
             color: 'hover:text-gray-400'
         },
         {
             name: 'Email',
             icon: <MdOutlineMail size={24} />,
-            url: 'https://github.com/seu_github',
+            url: 'https://mail.google.com/mail/u/1/?ogbl#inbox?compose=CllgCJvmZlLMWTNRDDsJFxXSHtFspTjwztNFWmCqRSCJJgsxJFxPtjvDxVBhQMMkvgmWzRzPVMg',
             color: 'hover:text-red-400'
         }
     ];
 
     return (
         <>
-            <aside className={`bg-gray-900 p-4 hide-scrollbar w-full relative min-h-fit
-                lg:w-1/5 lg:fixed lg:left-0 lg:top-0 lg:h-screen
-                ${isFirstLoad 
+            <aside className={`bg-gray-900 p-4 w-full relative
+    lg:w-1/5 lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-auto hide-scrollbar
+    ${isFirstLoad
                     ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'lg:transform lg:translate-x-full lg:opacity-0'}`
                     : ''
                 }`}>
 
-                <div className={`text-center mb-4 ${
-                    isFirstLoad 
-                        ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
-                        : ''
-                }`}>
+                <div className={`text-center mb-4 ${isFirstLoad
+                    ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
+                    : ''
+                    }`}>
                     <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mt-5 p-1 border-3 border-white rounded-full">
                         <div className="flip-container">
-                            <div 
+                            <div
                                 className={`flip-inner ${isFlipped ? 'flipped' : ''}`}
                                 onClick={handleFlip}
                             >
@@ -132,7 +131,7 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
                                         className="w-full h-full object-cover rounded-full"
                                     />
                                 </div>
-                                
+
                                 <div className="flip-back">
                                     <img
                                         src={qrcode}
@@ -147,11 +146,10 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
                     <p className='text-gray-400 text-sm mt-1'>Desenvolvedor Full Stack</p>
                 </div>
 
-                <div className={`flex justify-center gap-6 ${
-                    isFirstLoad 
-                        ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
-                        : ''
-                }`} style={isFirstLoad ? { animationDelay: '0.2s' } : {}}>
+                <div className={`flex justify-center gap-6 ${isFirstLoad
+                    ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
+                    : ''
+                    }`} style={isFirstLoad ? { animationDelay: '0.2s' } : {}}>
                     {socialLinks.map((social) => (
                         <a
                             key={social.name}
@@ -181,12 +179,12 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
                                 className={`
                                     flex items-center gap-3 p-3 rounded-lg cursor-pointer
                                     ${tech.color} text-white hover:scale-105 min-h-[50px]
-                                    ${isFirstLoad 
+                                    ${isFirstLoad
                                         ? `transition-all duration-500 ${visibleTechs.includes(index) ? 'animate-slide-in-bottom' : 'opacity-0 transform translate-y-4'}`
                                         : 'transition-transform duration-300'
                                     }
                                 `}
-                                style={isFirstLoad ? { 
+                                style={isFirstLoad ? {
                                     animationDelay: `${800 + (index * 100)}ms`,
                                     transitionDelay: visibleTechs.includes(index) ? `${800 + (index * 100)}ms` : '0ms'
                                 } : {}}

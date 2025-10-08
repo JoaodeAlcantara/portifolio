@@ -1,4 +1,9 @@
 import webcarros from '../assets/webcarros.png';
+import ekhytera from '../assets/ekhytera.png';
+import todolist from '../assets/todolist.png';
+import chat from '../assets/chat.png';
+
+
 import {
     IoLogoJavascript,
     IoLogoNodejs,
@@ -11,6 +16,7 @@ import {
     SiExpress,
     SiPrisma,
 } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
 import Project from './Project';
 
 interface ProjetcsListProps {
@@ -19,9 +25,9 @@ interface ProjetcsListProps {
 
 const projects = [
     {
-        imagem: webcarros,
+        imagem: ekhytera,
         name: 'EKHYTERA',
-        description: 'Website que permite os usuarios montarem computadores com base em suas reais necessidades de uso',
+        description: 'Website que permite os usuarios montarem computadores com base em suas reais necessidades de uso, comunicação entre usuarios e conteudos e noticias sobre a area da tecnologia.',
         link: 'https://github.com/Ekhytera',
         technologies: [
             { name: 'React', icon: <SiReact size={20} />, color: 'bg-cyan-500' },
@@ -31,14 +37,14 @@ const projects = [
             { name: 'JavaScript', icon: <IoLogoJavascript size={20} />, color: 'bg-yellow-500' },
             { name: 'Express', icon: <SiExpress size={20} />, color: 'bg-zinc-800' },
             { name: 'PrismaORM', icon: <SiPrisma size={20} />, color: 'bg-gray-900' },
-            { name: 'MySQL', icon: <SiMysql size={20} />, color: 'bg-orange-500' },
+            { name: 'Postgre', icon: <BiLogoPostgresql  size={20} />, color: 'bg-blue-800' },
         ]
     },
     {
         imagem: webcarros,
         name: 'WEBCARROS',
         description: 'Plataforma de anuncios para vendas de carros com organização por lista pessoal de desejos.',
-        link: '',
+        link: 'https://github.com/JoaodeAlcantara/WEBCARROS',
         technologies: [
             { name: 'React', icon: <SiReact size={20} />, color: 'bg-cyan-500' },
             { name: 'TypeScript', icon: <SiTypescript size={20} />, color: 'bg-blue-600' },
@@ -51,7 +57,23 @@ const projects = [
         ]
     },
     {
-        imagem: webcarros,
+        imagem: chat,
+        name: 'DevChat',
+        description: 'Chat em grupo que permite usuarios conversarem em tempo real utilizando o websocket',
+        link: 'https://github.com/JoaodeAlcantara/chat-c-websocket',
+        technologies: [
+            { name: 'React', icon: <SiReact size={20} />, color: 'bg-cyan-500' },
+            { name: 'TypeScript', icon: <SiTypescript size={20} />, color: 'bg-blue-600' },
+            { name: 'Tailwind', icon: <SiTailwindcss size={20} />, color: 'bg-cyan-400' },
+            { name: 'Node.js', icon: <IoLogoNodejs size={20} />, color: 'bg-green-500' },
+            { name: 'JavaScript', icon: <IoLogoJavascript size={20} />, color: 'bg-yellow-500' },
+            { name: 'Express', icon: <SiExpress size={20} />, color: 'bg-zinc-800' },
+            { name: 'PrismaORM', icon: <SiPrisma size={20} />, color: 'bg-gray-900' },
+            { name: 'MySQL', icon: <SiMysql size={20} />, color: 'bg-orange-500' },
+        ]
+    },
+    {
+        imagem: todolist,
         name: 'Lista de tarefas',
         description: 'Gerenciador de tarefas com definição de tempo limite e atualização automática de status.',
         link: '',
