@@ -1,5 +1,4 @@
 import CardContent from "./CardContent";
-import { MdDownload } from "react-icons/md";
 import { FaPhoneAlt, FaCode, FaRocket, FaUsers } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
@@ -124,15 +123,19 @@ function AboutMe({ onToggleView, isAnimating, isFirstLoad, setIsFirstLoad }: Abo
                             ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-bottom' : 'opacity-0 transform translate-y-8'}`
                             : ''
                     }`}>
-                        <button className="group flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-600 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        <a 
+                            href="https://linkedin.com/in/joaoteixeira02"
+                            target="_blank" 
+                            className="cursor-pointer group flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-600 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                        >
                             <FaPhoneAlt className="mr-3 group-hover:rotate-12 transition-transform duration-300" />
                             <span>Entrar em Contato</span>
-                        </button>
+                        </a>
 
-                        <button className="group flex items-center justify-center bg-white hover:bg-gray-50 text-gray-800 font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl border-2 border-gray-200 hover:border-gray-300 transform hover:scale-105 transition-all duration-300">
+                        {/* <button className="group flex items-center justify-center bg-white hover:bg-gray-50 text-gray-800 font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl border-2 border-gray-200 hover:border-gray-300 transform hover:scale-105 transition-all duration-300">
                             <MdDownload className="mr-3 group-hover:bounce transition-transform duration-300" />
                             <span>Baixar Currículo</span>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 

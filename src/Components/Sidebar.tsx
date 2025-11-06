@@ -8,7 +8,6 @@ import {
     IoLogoLinkedin,
     IoLogoGithub
 } from "react-icons/io";
-import { BiData } from "react-icons/bi";
 import {
     SiReact,
     SiTailwindcss,
@@ -16,7 +15,10 @@ import {
     SiSass,
     SiMysql,
     SiSharp,
-    SiDotnet
+    SiDotnet,
+    SiSupabase ,
+    SiN8N,
+    SiPrisma 
 } from "react-icons/si";
 import { MdOutlineMail } from "react-icons/md";
 
@@ -47,7 +49,9 @@ const technologies: Technology[] = [
     { name: 'Tailwind', icon: <SiTailwindcss size={20} />, color: 'bg-cyan-400' },
     { name: 'Sass', icon: <SiSass size={20} />, color: 'bg-pink-500' },
     { name: 'MySQL', icon: <SiMysql size={20} />, color: 'bg-orange-500' },
-    { name: 'SQL Server', icon: <BiData size={20} />, color: 'bg-red-600' }
+    { name: 'Supabase', icon: <SiSupabase size={20} />, color: 'bg-green-700' },
+    { name: 'N8N', icon: <SiN8N size={20} />, color: 'bg-red-600' },
+    { name: 'PrismaORM', icon: <SiPrisma size={20} />, color: 'bg-gray-700' },
 ];
 
 function Sidebar({ isFirstLoad }: SidebarProps) {
@@ -106,99 +110,96 @@ function Sidebar({ isFirstLoad }: SidebarProps) {
     ];
 
     return (
-        <>
-            <aside className={`bg-gray-900 p-4 w-full relative
+        <aside className={`bg-gray-900 p-4 w-full relative
     lg:w-1/5 lg:fixed lg:left-0 lg:top-0 lg:h-screen overflow-auto hide-scrollbar
     ${isFirstLoad
-                    ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'lg:transform lg:translate-x-full lg:opacity-0'}`
-                    : ''
+                ? `transition-all duration-800 ${animationStage >= 1 ? 'animate-slide-in-right' : 'lg:transform lg:translate-x-full lg:opacity-0'}`
+                : ''
+            }`}>
+
+            <div className={`text-center mb-4 ${isFirstLoad
+                ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
+                : ''
                 }`}>
+                <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mt-5 p-1 border-3 border-white rounded-full">
+                    <div className="flip-container">
+                        <div
+                            className={`flip-inner ${isFlipped ? 'flipped' : ''}`}
+                            onClick={handleFlip}
+                        >
+                            <div className="flip-front">
+                                <img
+                                    src={foto_perfil}
+                                    alt="foto de perfil"
+                                    className="w-full h-full object-cover rounded-full"
+                                />
+                            </div>
 
-                <div className={`text-center mb-4 ${isFirstLoad
-                    ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
-                    : ''
-                    }`}>
-                    <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mt-5 p-1 border-3 border-white rounded-full">
-                        <div className="flip-container">
-                            <div
-                                className={`flip-inner ${isFlipped ? 'flipped' : ''}`}
-                                onClick={handleFlip}
-                            >
-                                <div className="flip-front">
-                                    <img
-                                        src={foto_perfil}
-                                        alt="foto de perfil"
-                                        className="w-full h-full object-cover rounded-full"
-                                    />
-                                </div>
-
-                                <div className="flip-back">
-                                    <img
-                                        src={qrcode}
-                                        alt="QR Code"
-                                        className="w-full h-full"
-                                    />
-                                </div>
+                            <div className="flip-back">
+                                <img
+                                    src={qrcode}
+                                    alt="QR Code"
+                                    className="w-full h-full"
+                                />
                             </div>
                         </div>
                     </div>
-                    <h1 className='text-2xl text-white font-semibold mt-4'>João Teixeira</h1>
-                    <p className='text-gray-400 text-sm mt-1'>Desenvolvedor Full Stack</p>
                 </div>
+                <h1 className='text-2xl text-white font-semibold mt-4'>João Teixeira</h1>
+                <p className='text-gray-400 text-sm mt-1'>Desenvolvedor Full Stack</p>
+            </div>
 
-                <div className={`flex justify-center gap-6 ${isFirstLoad
-                    ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
-                    : ''
-                    }`} style={isFirstLoad ? { animationDelay: '0.2s' } : {}}>
-                    {socialLinks.map((social) => (
-                        <a
-                            key={social.name}
-                            href={social.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`
+            <div className={`flex justify-center gap-6 ${isFirstLoad
+                ? `transition-all duration-600 ${animationStage >= 2 ? 'animate-slide-in-top' : 'initial-hidden'}`
+                : ''
+                }`} style={isFirstLoad ? { animationDelay: '0.2s' } : {}}>
+                {socialLinks.map((social) => (
+                    <a
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`
                                     text-gray-300 transition-all duration-300 transform hover:scale-110
                                     ${social.color}
                                 `}
-                            title={social.name}
-                        >
-                            {social.icon}
-                        </a>
-                    ))}
-                </div>
+                        title={social.name}
+                    >
+                        {social.icon}
+                    </a>
+                ))}
+            </div>
 
-                <hr className='border-gray-700 my-6' />
+            <hr className='border-gray-700 my-6' />
 
-                {/* Seção 2: Habilidades Principais */}
-                <div className="mb-8">
-                    <h2 className='text-lg text-white font-semibold mb-4 text-center'>Principais Tecnologias</h2>
-                    <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3'>
-                        {technologies.map((tech, index) => (
-                            <div
-                                key={tech.name}
-                                className={`
+            <div className="mb-8">
+                <h2 className='text-lg text-white font-semibold mb-4 text-center'>Principais Tecnologias</h2>
+                <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3'>
+                    {technologies.map((tech, index) => (
+                        <div
+                            key={tech.name}
+                            className={`
                                     flex items-center gap-3 p-3 rounded-lg cursor-pointer
                                     ${tech.color} text-white hover:scale-105 min-h-[50px]
                                     ${isFirstLoad
-                                        ? `transition-all duration-500 ${visibleTechs.includes(index) ? 'animate-slide-in-bottom' : 'opacity-0 transform translate-y-4'}`
-                                        : 'transition-transform duration-300'
-                                    }
+                                    ? `transition-all duration-500 ${visibleTechs.includes(index) ? 'animate-slide-in-bottom' : 'opacity-0 transform translate-y-4'}`
+                                    : 'transition-transform duration-300'
+                                }
                                 `}
-                                style={isFirstLoad ? {
-                                    animationDelay: `${800 + (index * 100)}ms`,
-                                    transitionDelay: visibleTechs.includes(index) ? `${800 + (index * 100)}ms` : '0ms'
-                                } : {}}
-                            >
-                                <div className="text-white flex-shrink-0">
-                                    {tech.icon}
-                                </div>
-                                <span className='text-sm font-medium truncate'>{tech.name}</span>
+                            style={isFirstLoad ? {
+                                animationDelay: `${800 + (index * 100)}ms`,
+                                transitionDelay: visibleTechs.includes(index) ? `${800 + (index * 100)}ms` : '0ms'
+                            } : {}}
+                        >
+                            <div className="text-white flex-shrink-0">
+                                {tech.icon}
                             </div>
-                        ))}
-                    </div>
+                            <span className='text-sm font-medium truncate'>{tech.name}</span>
+                        </div>
+                    ))}
                 </div>
-            </aside>
-        </>
+            </div>
+        </aside>
     )
 }
 

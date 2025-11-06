@@ -16,7 +16,7 @@ import {
     SiExpress,
     SiPrisma,
 } from "react-icons/si";
-import { BiLogoPostgresql } from "react-icons/bi";
+import { SiSupabase } from "react-icons/si";
 import Project from './Project';
 
 interface ProjetcsListProps {
@@ -37,7 +37,7 @@ const projects = [
             { name: 'JavaScript', icon: <IoLogoJavascript size={20} />, color: 'bg-yellow-500' },
             { name: 'Express', icon: <SiExpress size={20} />, color: 'bg-zinc-800' },
             { name: 'PrismaORM', icon: <SiPrisma size={20} />, color: 'bg-gray-900' },
-            { name: 'Postgre', icon: <BiLogoPostgresql  size={20} />, color: 'bg-blue-800' },
+            { name: 'Supabse', icon: <SiSupabase  size={20} />, color: 'bg-green-700' },
         ]
     },
     {
